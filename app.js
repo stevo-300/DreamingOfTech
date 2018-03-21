@@ -26,6 +26,7 @@ const expressSanitizer = require('express-sanitizer')
 // Connect to the DB
 mongoose.connect('mongodb://localhost/dreamspace')
 
+
 // // Create Express-Handlebars
 let hbs = exphbs.create({
   defaultLayout: 'layout',
