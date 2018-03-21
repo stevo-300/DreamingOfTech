@@ -7,7 +7,7 @@
     "lint": "standard",
     "dev": "nodemon ./app --exec \"npm run lint && node\"",
     "start": "nodemon ./app",
-    "test": "mocha tests/*"
+    "test": "mocha TESTS/*"
   },
   "author": "Stephen Watson",
   "license": "MIT",
