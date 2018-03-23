@@ -24,6 +24,7 @@ describe('Home Page', () => {
     it('Should Display my homepage', (done) => {
         assert.ok(this.browser.success)
         expect(this.browser.text('title')).to.equal('Dreaming of Tech')
+        expect(this.browser.text('.navbar-brand')).to.equal('Dreaming of Tech')
         done()
     })
 

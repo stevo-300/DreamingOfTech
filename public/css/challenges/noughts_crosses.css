@@ -1,0 +1,57 @@
+h1.n_c {
+    font-size: 4em;
+    font-weight: 700;
+    font-family: 'Titillium Web';
+    text-align: center;
+}
+
+h3.n_c {
+    margin-top: 0px;
+    font-size: 2em;
+    font-weight: 700;
+    font-family: 'Titillium Web';
+    text-align: center;
+}
+
+table.n_c {
+    margin: 40px auto;
+}
+
+table.n_c td {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    font-size: 4em;
+}
+
+table.n_c td:nth-last-of-type(2) {
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
+
+table.n_c tr:nth-last-of-type(2) td {
+    border-top: 2px solid black;
+    border-bottom: 2px solid black;
+}
+
+#reset.n_c {
+    display: none;
+    margin: auto;
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+    /* Green */
+    font-size: 2em;
+    margin-top: 30px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#reset.n_c:hover {
+    background-color: #4CAF50;
+    /* Green */
+    color: white;
+}
+
+.winner {
+    color: red;
+}

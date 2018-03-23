@@ -5,5 +5,8 @@ module.exports = {
     }
     res.redirect('/login')
   },
-  checkCampgroundOwnership: function (req, res, next) { next() }
+  checkCampgroundOwnership: function (req, res, next) {
+    next()
+  },
+  strings: require('./strings')
 }
