@@ -1,7 +1,7 @@
 {
   "name": "dreamingoftech",
   "version": "1.0.0",
-  "description": "Portfolio Website",
+  "description": "Portfolio Website - Node",
   "main": "app.js",
   "scripts": {
     "lint": "standard",
