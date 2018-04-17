@@ -108,8 +108,7 @@ app.use((req, res, next) => {
 app.use('/blog', require('./routes/blog'))
 app.use('/blog/:id/comments', require('./routes/blogcomments'))
 app.use('/coding', require('./routes/coding'))
-// app.use('/tools', require('./routes/tools'))
-// app.use('/games', require('./routes/games'))
+app.use('/tools', require('./routes/tools'))
 app.use('/', require('./routes/index'))
 
 // Set Port and start the server

@@ -1,12 +1,17 @@
 const express = require('express')
 const router = express.Router()
 const Post = require('../models/post')
+const markdown = require('markdown')
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 router.get('/', (req, res) => {
   Post.find({}).sort('-created').exec((err, allPosts) => {
     if (err) {
       console.log(err)
     } else {
+      allPosts.forEach(e => {
+        e.shortDate = e.created.getDate() + " " + months[e.created.getMonth()] + " " + e.created.getFullYear()
+      })
       res.render('blog/index', {
         campgrounds: allPosts
       })
@@ -52,8 +57,13 @@ router.get('/:id/edit', global.dreamspace.checkCampgroundOwnership, (req, res) =
       console.log(err)
     }
     // console.log(foundPost)
+
+    //Edit post details
+    let updatedPost = foundpost
+    updatedPost.post = markdown.toHTML(updatedPost.post)
+
     res.render('blog/edit', {
-      post: foundPost
+      post: updatedPost
     })
   })
 })
@@ -76,5 +86,7 @@ router.delete('/:id', (req, res) => {
     res.redirect('/blog')
   })
 })
+
+
 
 module.exports = router

@@ -17,10 +17,10 @@
         <img src="{{this.image}}" alt="Image - {{this.title}}" class="card-img-top">
         <div class="card-body">
           <h5 class="card-title">
-            {{this.title}} - {{this.created}}
+            {{this.title}} - {{this.shortDate}}
           </h5>
           <p class="card-text">Post Body</p>
-          <a href="#" class="btn btn-primary">Read More</a>
+          <a href="/blog/{{this._id}}" class="btn btn-primary">Read More</a>
         </div>
       </div>
       <hr> {{/each}}

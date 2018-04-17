@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
 const passport = require('passport')
-const marked = require('marked')
+const markdown = require('markdown')
 // data
 let holdingPage = require('../Ideas/ideas.js')
 

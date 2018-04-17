@@ -22,7 +22,7 @@
     "express-vue": "^4.0.14",
     "helmet": "^3.10.0",
     "just-handlebars-helpers": "^1.0.13",
-    "marked": "^0.3.12",
+    "markdown": "^0.5.0",
     "method-override": "^2.3.10",
     "mongoose": "^5.0.3",
     "morgan": "^1.9.0",
