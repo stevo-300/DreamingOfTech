@@ -4,10 +4,7 @@
  */
 module.exports = (router) => {
   router.get("/",
-    /**
-     * @param {object} req
-     * @param {object} res
-     */
+
     (req, res) => {
       const data = {
         title: "Oh hi world!",
