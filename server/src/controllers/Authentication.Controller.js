@@ -6,22 +6,20 @@ module.exports = {
     res.send({messgae: 'register'})
   },
 
-  registerPost (req, res) {
-    User.register(new User({
-      username: req.body.username
-    }), req.body.password, (err, user) => {
-      if (err) {
-        console.log(err)
-        return res.redirect('/register')
-      }
+  async registerPost (req, res) {
+    try {
+      const newUser = new User({username: req.body.username})
+      await User.registerAsync(newUser, req.body.password)
       passport.authenticate('local')(req, res, () => {
         res.redirect('/blog')
       })
-    })
+    } catch (err) {
+      console.log(err)
+    }
   },
 
   login (req, res) {
-    res.send({message: 'login'})
+    res.send({message: 'login', user: res.locals.currentUser})
   },
 
   logout (req, res) {

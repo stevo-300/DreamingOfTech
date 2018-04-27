@@ -16,6 +16,10 @@ const morgan = require('morgan')
 const cors = require('cors')
 const methodOverride = require('method-override')
 const expressSanitizer = require('express-sanitizer')
+
+// Set the Mongoose Promise Library
+mongoose.Promise = require('bluebird')
+
 // Connect to the DB
 mongoose.connect('mongodb://localhost/dreamspace')
 
@@ -82,9 +86,9 @@ app.use((req, res, next) => {
 
 const routes = require('./routes')
 app.use('/blog', routes.blog)
-// app.use('/blog/:id/comments', require('./routes/blogcomments'))
-// app.use('/coding', require('./routes/coding'))
-// app.use('/tools', require('./routes/tools'))
+app.use('/blog/:id/comments', routes.blogComments)
+app.use('/coding', routes.coding)
+app.use('/tools', routes.tools)
 app.use('/', routes.index)
 
 app.listen(process.env.PORT || 8081, () => { console.log('server started') })
