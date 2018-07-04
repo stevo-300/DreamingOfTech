@@ -25,7 +25,7 @@ const bodyParser = require('body-parser')
 const expressSanitizer = require('express-sanitizer')
 const methodOverride = require('method-override')
 // Connect to the DB
-mongoose.connect('mongodb://localhost/dreamspace')
+mongoose.connect('mongodb://mongodb_db/dreamspace')
 
 // // Create Express-Handlebars
 let hbs = exphbs.create({
