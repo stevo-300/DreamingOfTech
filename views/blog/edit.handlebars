@@ -1,30 +1,41 @@
 <div class="container">
-  <div class="row">
-    <h1 class="text-center">Edit {{post.title}}</h1>
-    <div class="camp">
-      <form action="/campgrounds" method="post">
+  <div class="row justify-content-md-center">
+    <div class="col-md-12 col-sm-12">
+      <div class="card">
+        <div class="card-header text-center">Edit {{post.title}}</div>
+        <div class="card-body p-4">
+          <form action="/blog/{{post._id}}?_method=PUT" method="post">
+            <div class="form-group row">
+              <label for="blog[image]" class="col-2">Cover Image</label>
+              <input class="form-control col-9" type="text" name="blog[image]" value="{{post.image}}">
+            </div>
+            
+            <div class="form-group row">
+              <label for="blog[icon]" class="col-2">Icon</label>
+              <input class="form-control col-9" type="text" name="blog[icon]" value="{{post.icon}}">
+            </div>
+            <div class="form-group">
+              <textarea name="blog[post]" cols="30" rows="10" id="postArea">{{post.post}}</textarea>
+            </div>
+            <div class="form-check mt-2 mb-2 justify-content-left">              
+              {{#if post.published}}
+              <input class="form-check-input" type="checkbox" name="blog[published]" checked>
+              {{else}}
+              <input class="form-check-input" type="checkbox" name="blog[published]">
+              {{/if}}
+              <label class="form-check-label" for="blog[published]">Published</label>
+            </div>
+            <div class="form-group">
+              <input class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">
+            </div>
 
-        <div class="form-group">
-          <input class="form-control" type="text" name="blog[image]" value="{{post.image}}">
+          </form>
+          
+          <a href="/blog">Go Back</a>
         </div>
-        <div class="form-group">
-          <textarea name="blog[body]" cols="30" rows="10" id="postArea">{{post.post}}</textarea>
-        </div>
-        <div class="form-group">
-          <input class="btn btn-lg btn-primary btn-block" type="submit" value="Submit">
-        </div>
-
-      </form>
-      <a href="/blog">Go Back</a>
+      </div>
     </div>
-
-
-
   </div>
-
-
-
-
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.js"></script>

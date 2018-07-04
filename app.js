@@ -23,9 +23,9 @@ const helmet = require('helmet')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const expressSanitizer = require('express-sanitizer')
+const methodOverride = require('method-override')
 // Connect to the DB
 mongoose.connect('mongodb://localhost/dreamspace')
-
 
 // // Create Express-Handlebars
 let hbs = exphbs.create({
@@ -64,6 +64,7 @@ app.use(expressSession({
 
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(methodOverride('_method'))
 
 // PASSPORT
 passport.use(new LocalStrategy(User.authenticate()))
@@ -92,14 +93,13 @@ app.use(expressValidator({
 }))
 
 // Body Parser Middleware
-app.use(bodyParser.urlencoded({
-  extended: true
-}))
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 app.use(expressSanitizer())
 
 app.use((req, res, next) => {
   res.locals.currentUser = req.user
-  res.locals.globalStrings = dreamspace.strings.global
+  res.locals.globalStrings = global.dreamspace.strings.global
   next()
 })
 
@@ -109,6 +109,7 @@ app.use('/blog', require('./routes/blog'))
 app.use('/blog/:id/comments', require('./routes/blogcomments'))
 app.use('/coding', require('./routes/coding'))
 app.use('/tools', require('./routes/tools'))
+app.use('/bots/j309048hBNJIHFf8', require('./routes/bots'))
 app.use('/', require('./routes/index'))
 
 // Set Port and start the server
@@ -118,7 +119,9 @@ app.set('port', 5000)
 module.exports = app
 
 if (!module.parent) {
-  app.listen(app.get('port'), () => {
-    console.log('Server started on port ' + app.get('port'))
+  app.listen(app.get('port'), (err, listen) => {
+    if (err) { console.log(err) } else {
+      console.log('Server started on port ' + app.get('port'))
+    }
   })
 }

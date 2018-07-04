@@ -1,0 +1,91 @@
+
+
+/* #container {
+  box-shadow: 0 0 3px rgba(0,0,0,0.1);
+  width: 360px;
+  margin: 100px auto;
+  background: #f7f7f7;
+  
+} */
+
+h1.shopping {
+
+  background: #fec810;
+  color: white;
+  margin: 0;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+ul.shopping {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+
+li.shopping {
+  background: #fff;
+  height: 40px;
+  line-height: 40px;
+  color: #666;
+}
+
+li.shopping:nth-child(2n) {
+  background: #f7f7f7;
+}
+
+input.shopping {
+  width: 100%;
+  font-size: 18px;
+  background: #f7f7f7;
+  padding: 13px 13px 13px 20px;
+  box-sizing: border-box;
+  color: #000;
+  border: 3px solid rgba(0,0,0,0);
+}
+
+input.shoppingQty {
+  width: 35px;
+  font-size: 14px;
+  background: #f7f7f7;
+  box-sizing: border-box;
+  text-align: center;
+
+}
+
+input.shopping:focus {
+  border: 3px solid #fec810;
+  background: #fff;
+  outline:none;
+}
+
+.completed.shopping {
+  color:grey;
+  text-decoration: line-through;
+}
+
+
+
+.fa-plus.shopping {
+  float: right;
+}
+
+.remove.shopping {
+  background: #e74c3c;
+  height: 40px;
+  margin-right: 20px;
+  text-align: center;
+  color: white;
+  width: 0px;
+  display: inline-block;
+  transition: 0.2s linear;
+  opacity: 0;
+}
+
+li:hover .remove {
+  width: 40px;
+  opacity: 1.0;
+}

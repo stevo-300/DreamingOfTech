@@ -2,13 +2,25 @@ const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
 const passport = require('passport')
-const markdown = require('markdown')
+const post = require('../models/post')
+const moment = require('moment')
+// const markdown = require('markdown')
 // data
-let holdingPage = require('../Ideas/ideas.js')
+// let holdingPage = require('../Ideas/ideas.js')]
 
 router.get('/', (req, res) => {
-  res.render('landing', {
-    landingPage: true
+  post.find({published: true}).sort('-created').limit(3).exec((err, allPosts) => {
+    if (err) {
+      console.log(err)
+    } else {
+      allPosts.forEach(e => {
+        e.shortDate = moment(e.created).format('D MMMM YYYY')
+      })
+      res.render('landing', {
+        landingPage: true,
+        blog: allPosts
+      })
+    }
   })
 })
 
@@ -48,7 +60,7 @@ router.get('/logout', (req, res) => {
 
 router.get('*', function (req, res) {
   res.render('holding', {
-    text: marked(holdingPage)
+    text: 'Page Not Found'
   })
 })
 

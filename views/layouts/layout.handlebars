@@ -17,6 +17,8 @@
     <link href='https://cdnjs.cloudflare.com/ajax/libs/simplemde/1.11.2/simplemde.min.css' rel='stylesheet' type='text/css'>
 
     <link rel="stylesheet" href="/css/dream.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -35,6 +37,14 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="/blog">Blog</a>
             </li>
+            {{#if currentUser}}
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tools</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown04">
+                <a class="dropdown-item  js-scroll-trigger" href="/tools/shopping">Shopping List</a>
+              </div>
+            </li>
+            {{/if}}
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Coding</a>
               <div class="dropdown-menu" aria-labelledby="dropdown04">
@@ -42,7 +52,12 @@
                 <a class="dropdown-item  js-scroll-trigger" href="/coding/games">Games</a>
               </div>
             </li>
-
+            {{#if currentUser}}
+              <li class="nav-item"><a class="nav-link  js-scroll-trigger" href="/logout">Logout</a></li>
+            {{else}}
+              <li class="nav-item"><a class="nav-link  js-scroll-trigger" href="/register">Register</a></li>
+              <li class="nav-item"><a class="nav-link  js-scroll-trigger" href="/login">Login</a></li>
+            {{/if}}
           </ul>
         </div>
       </div>
@@ -68,17 +83,17 @@
           <div class="col-md-4">
             <ul class="list-inline social-buttons">
               <li class="list-inline-item">
-                <a href="#">
+                <a target="_blank" href="https://twitter.com/tech_dreamer_uk">
                   <i class="fa fa-twitter"></i>
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="#">
+                <a target="_blank" href="https://www.facebook.com/Dreaming-of-Tech-277502449459161/">
                   <i class="fa fa-facebook"></i>
                 </a>
               </li>
               <li class="list-inline-item">
-                <a href="#">
+                <a target="_blank" href="https://www.linkedin.com/in/stephen-watson-61373b15/">
                   <i class="fa fa-linkedin"></i>
                 </a>
               </li>
@@ -100,8 +115,7 @@
       </div>
     </footer>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-      crossorigin="anonymous"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
       crossorigin="anonymous"></script>
 

@@ -1,4 +1,5 @@
 <div class="container">
+  <div class="hide">/blog/{{post._id}}/likes/</div>
   <div class="row">
     {{!--
     <div class="col-md-3">
@@ -10,7 +11,7 @@
       </div>
       map
     </div> --}}
-    <div class="col-md-9">
+    <div class="col-md-9  blogSideBar">
       <div class="thumbnail">
         <img class="responsive" src="{{post.image}}" alt="">
         <div class="caption">
@@ -22,14 +23,37 @@
           <p>
             <em>Submitted By {{post.author.username}}</em>
           </p>
+          {{#if (eq currentUser.username 'steveadmin')}}
+          <div class="inline">
           <a href="/blog/{{post._id}}/edit" class="btn btn-warning">Edit</a>
           <form id="delete-form" action="/blog/{{post._id}}?_method=DELETE" method="post">
             <button class="btn btn-danger">Delete</button>
           </form>
+          </div>
+          {{/if}}
+
         </div>
 
       </div>
-      <div class="well">
+
+      <div class="likeComments mt-4">
+        {{#if currentUser}}
+            <span class="ml-3">
+                  <i class="fa fa-thumbs-o-up" title="Like"></i>
+                  <span id="postLike">{{post.votes.like}}</span>
+            </span>
+            <span class="ml-3">
+                  <i class="fa fa-thumbs-o-down" title="Dislike"></i>
+                  <span id="postDislike">{{post.votes.dislike}}</span>
+            </span>
+          {{/if}}
+            <span class="ml-3 commentCount">{{post.commentCount}} Comments</span>
+       </div>
+        
+        
+  
+
+      <div class="well mt-4">
         <div>
           <p>
             <a href="/blog/{{post._id}}/comments/new" class="btn btn-success">Add Comment</a>
@@ -40,7 +64,7 @@
         <div class="row">
           <div class="col-md-12">
             <strong>{{this.author.username}}</strong>
-            <span class="pull-right">10 Days Ago</span>
+            <span class="pull-right">{{this.daysAgo}} days ago</span>
             <p>{{this.text}}</p>
           </div>
         </div>
@@ -50,6 +74,11 @@
 
 
 
+    </div>
+    <div class="col-md-3">
+      <a href="#">Link 1</a>
+      <a href="#">Link 1</a>
+      <a href="#">Link 1</a>
     </div>
   </div>
 

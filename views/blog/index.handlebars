@@ -1,32 +1,46 @@
 <div class="container">
   <header class="jumbotron">
     <div class="container">
-      <h1>Welcome to Dreaming of Tech</h1>
-
+      <h1>{{globalStrings.blogTitle}}</h1>
+      <h5>{{globalStrings.blogSubTitle}}</h5>
+      {{#if (eq currentUser.username 'steveadmin')}}
       <p>
         <a href="/blog/new" class="button primary big">Add New Post</a>
       </p>
+      {{/if}}
     </div>
   </header>
 
   <div class="row">
-    <div class="col-md-9 col-sm-12">
+    <div class="col-md-9 col-sm-12  blogSideBar">
       {{#each campgrounds}}
 
       <div class="card">
-        <img src="{{this.image}}" alt="Image - {{this.title}}" class="card-img-top">
+        {{#if this.image}}
+          <img src="{{this.image}}" alt="Image - {{this.title}}" class="card-img-top">
+        {{/if}}
         <div class="card-body">
           <h5 class="card-title">
             {{this.title}} - {{this.shortDate}}
+            {{#if this.published}}
+            {{else}}
+             - Not Live
+            {{/if}}
           </h5>
-          <p class="card-text">Post Body</p>
+          <p class="card-text">{{this.snippet}}...</p>
           <a href="/blog/{{this._id}}" class="btn btn-primary">Read More</a>
+          {{#if (eq ../currentUser.username 'steveadmin')}}
+            <a href="/blog/{{this._id}}/edit" class="btn btn-warning">Edit</a>
+            <form id="delete-form" action="/blog/{{this._id}}?_method=DELETE" method="post">
+              <button class="btn btn-danger">Delete</button>
+            </form>
+          {{/if}}
         </div>
       </div>
       <hr> {{/each}}
 
     </div>
-    <div class="col-md-3 blogSideBar">
+    <div class="col-md-3">
       <a href="#">Link 1</a>
       <a href="#">Link 1</a>
       <a href="#">Link 1</a>

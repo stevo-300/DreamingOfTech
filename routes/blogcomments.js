@@ -9,12 +9,12 @@ router.get('/new', global.dreamspace.isLoggedIn, (req, res) => {
     if (err) {
       console.log(err)
     } else {
-      res.render('comment/new', {Campground: data})
+      res.render('comment/new', {post: data})
     }
   })
 })
 
-router.post('/', global.dreamspace.isLoggedIn, (req, res) => {
+router.put('/', global.dreamspace.isLoggedIn, (req, res) => {
   Post.findById(req.params.id, function (err, data) {
     if (err) {
       console.log(err)
@@ -36,6 +36,11 @@ router.post('/', global.dreamspace.isLoggedIn, (req, res) => {
       })
     }
   })
+})
+
+// TODO: Edit Comment
+
+router.put(':cid', global.dreamspace.isLoggedIn, (req, res) => {
 })
 
 module.exports = router

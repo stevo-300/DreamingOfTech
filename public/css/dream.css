@@ -84,11 +84,11 @@ section h3.section-subheading {
 
 .btn-primary:active,
 .btn-primary:focus,
-.btn-primary:hover {
+/*.btn-primary:hover {
   background-color: #fec810 !important;
   border-color: #fec810 !important;
   color: white;
-}
+}*/
 
 .btn-primary:active,
 .btn-primary:focus {
@@ -727,5 +727,50 @@ ul.social-buttons li a:hover {
 }
 
 .blogSideBar {
-  border-left: 2px solid rgba(254, 209, 55, 0.7);
+  border-right: 2px solid rgba(254, 209, 55, 0.7);
+  border-image: linear-gradient(to bottom, rgba(254, 209, 55, 0.7) 96%, rgba(0,0,0,0) 2%); /* to top - at 50% transparent */
+  border-image-slice: 1;
+}
+
+.btn-primary:hover {
+  background-color: #ffe68c;
+  border-color: #fec810;
+  color: #fff;
+}
+
+.btn-outline-primary {
+  background-color: #fff;
+  border-color: #fed136;
+  color: #fed136;
+}
+
+.btn-outline-primary:hover {
+  background-color: #fed136;
+  border-color: #fed136;
+  color: #fff
+}
+
+.likeComments {
+  font-size: 2em;
+  position: relative;
+}
+
+.clear {
+  clear: both
+}
+
+.iconButton {
+  background-color: rgba(0,0,0,0);
+  border: none;
+}
+
+.commentCount {
+  font-size: 1rem;
+  position: absolute;
+  right:0;
+  bottom: 0;
+}
+
+.hide {
+  display: none;
 }
